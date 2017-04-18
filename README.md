@@ -1,6 +1,6 @@
 # React Workshop Solutions
 
-A repository for workshop solutions and demos.
+A repository for workshop solutions and demos. Be sure to run `npm install` to download the solution dependencies!
 
 * [Ticking Clock](./ticking_clock)
 * [Hello Dojo](./hello_dojo)
