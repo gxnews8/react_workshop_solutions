@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Composable Squares</title>
+        <script src="node_modules/react/dist/react.js"></script>
+        <script src="node_modules/react-dom/dist/react-dom.js"></script>
+    </head>
+    <body>
+        <div id="app"></div>
+        <script>
+            const Square = (props) => {
+                const { bgcolor, txtcolor } = props;
+                
+                const style = {
+                    background: bgcolor,
+                    color: txtcolor,
+                    height: 100,
+                    width: 100,
+                    display: 'inline-block'
+                }
+
+                return React.createElement('div', { style }, `${txtcolor} on ${bgcolor}`)
+            }
+
+            const App = (props) => {
+                return React.createElement('div', null,
+                                React.createElement(Square, { bgcolor: 'blue', txtcolor: 'white' }),
+                                React.createElement(Square, { bgcolor: 'red', txtcolor: 'blue' }),
+                                React.createElement(Square, { bgcolor: 'pink', txtcolor: 'green'})
+                )
+            }
+
+            ReactDOM.render(
+                React.createElement(App),
+                document.getElementById('app')
+            );
+        </script>
+    </body>
+</html>
