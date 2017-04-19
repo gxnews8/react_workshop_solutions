@@ -4,6 +4,7 @@ A repository for workshop solutions and demos. Be sure to run `npm install` to d
 
 * [Ticking Clock](./ticking_clock)
 * [Hello Dojo](./hello_dojo)
+* [Functional 101](./functional_101)
 * [Composable Squares](./composable_squares)
 * [Counter](./counter)
 * [Voting App](./voting_app)
