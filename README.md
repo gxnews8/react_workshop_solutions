@@ -9,3 +9,4 @@ A repository for workshop solutions and demos. Be sure to run `npm install` to d
 * [Counter](./counter)
 * [Voting App](./voting_app)
 * [Validated Form](./validated_form)
+* [Movie Data](./movie_data)
