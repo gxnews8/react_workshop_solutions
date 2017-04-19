@@ -4,58 +4,50 @@ import FormField from './FormField';
 
 class ValidatedForm extends Component {
     state = {
-        fields: { 
-            name: '',
-            email: ''
-        },
-        errors: { }
+        inputVals: { name: '', email: '' },
+        errors: { },
+        submitted: false
     }
     blockSubmit(){
-        const {fields} = this.state;
-
-        if (!fields.name || !fields.email ) { return true }
-
         const errorMsgs = Object.keys(this.state.errors).filter((key) => this.state.errors[key]);
-
-        return (errorMsgs.length > 0);
+        const blankInputs = Object.keys(this.state.inputVals).filter((key) => this.state.inputVals[key] === '');
+        return (errorMsgs.length > 0 || blankInputs.length > 0);
     }
     handleChange = ({ name, value, error }) => {
-        const fields = this.state.fields;
-        const errors = this.state.errors;
+        const { errors, inputVals } = this.state;
 
         const newState = {
-            fields: {
-                ...fields,
-                [name] : value
+            inputVals: {
+                ...inputVals,
+                [name]: value
             },
             errors: {
                 ...errors,
                 [name]: error
             }
         }
-
         this.setState(newState);
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.setState({ fields: { name: '', email: '' } })
+        this.setState({
+            submitted: true
+        });
     }
     render(){
-        return (
+        return (this.state.submitted) ? <h1>Thanks!</h1> : (
             <form onSubmit={this.handleSubmit}>
                 <FormField 
                     name='name'
                     placeholder='Name'
                     validate={ validateName }
-                    value={ this.state.fields.name }
                     onChange={ this.handleChange }
                 />
                 <FormField 
                     name='email'
                     placeholder='Email'
                     validate={ validateEmail }
-                    value={ this.state.fields.email }
                     onChange={ this.handleChange }
                 />
 
@@ -65,4 +57,4 @@ class ValidatedForm extends Component {
     }
 }
 
-export default RegistrationForm;
+export default ValidatedForm;

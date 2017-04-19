@@ -4,6 +4,7 @@ const { string, func } = PropTypes;
 
 class FormField extends Component {
     state = {
+        value: this.props.placeholder,
         error: false
     }
 
@@ -22,7 +23,8 @@ class FormField extends Component {
             error
         }
         this.setState({
-            error
+            error,
+            value
         });
         this.props.onChange(args);
     }
@@ -37,7 +39,7 @@ class FormField extends Component {
                     onChange={this.handleChange}
                 />
                 {
-                    this.props.value !== '' && <span className="errors" style={{ color: 'red' }}>{this.state.error}</span>
+                    this.state.value !== '' && <span className="errors" style={{ color: 'red' }}>{this.state.error}</span>
                 }
             </div>
         )

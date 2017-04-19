@@ -8,3 +8,4 @@ A repository for workshop solutions and demos. Be sure to run `npm install` to d
 * [Composable Squares](./composable_squares)
 * [Counter](./counter)
 * [Voting App](./voting_app)
+* [Validated Form](./validated_form)
