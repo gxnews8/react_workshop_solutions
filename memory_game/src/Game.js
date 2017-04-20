@@ -51,7 +51,7 @@ class Game extends Component {
         this.setState(newState);
     }
     resetGame = () => {
-        this.setState({ ...this.initialState });
+        this.setState({ ...this.initialState, activeCells: this.generateActiveCells(this.matrix) });
     }
     updateGamePhase = (phase) => {
         this.setState({
