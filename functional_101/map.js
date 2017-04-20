@@ -6,3 +6,6 @@ Array.prototype.map = function(callback){
     }
     return newArr;
 }
+
+const arr = [1,2,3]
+console.log(arr.map((val) => val * 2));
