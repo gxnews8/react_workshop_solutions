@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import browserHistory from './browserHistory';
 
 class App extends Component {
-    rerender = () => {
-        this.forceUpdate();
+    constructor(props){
+        super(props);
+        browserHistory.subscribe(() => {
+            this.forceUpdate();
+        });
     }
     render(){
         return (
             <div>
-                <Link to="/javascript" rerender={this.rerender}>JavaScript</Link>
-                <Link to="/haskell" rerender={this.rerender}>Haskell</Link>
-                <Link to="/haskell" rerender={this.rerender}>Haskell</Link>
-                <Link to="/haskell" rerender={this.rerender}>Haskell</Link>
-                <Link to="/haskell" rerender={this.rerender}>Haskell</Link>
-                <Link to="/haskell" rerender={this.rerender}>Haskell</Link>
-                
+                <Link to="/javascript">JavaScript</Link>
+                <Link to="/haskell">Haskell</Link>
                 <hr/>
                 <Route pattern='/javascript' component={JavaScript}/>
                 <Route pattern='/haskell' component={Haskell}/>
@@ -32,8 +31,7 @@ const Route = ({pattern, component }) => {
 const Link = ({to, children, rerender}) => {
     const handleClick = (event) => {
         event.preventDefault();
-        history.pushState({}, null, to);
-        rerender();
+        browserHistory.navigateTo(to);
     }
     return (
         <a  
@@ -47,8 +45,7 @@ const Link = ({to, children, rerender}) => {
 
 Link.propTypes = {
     to: PropTypes.string.isRequired,
-    children: PropTypes.string.isRequired,
-    rerender: PropTypes.func.isRequired
+    children: PropTypes.string.isRequired
 }
 
 const JavaScript = () => <p>A high-level, dynamic, untyped, and interpreted programming language.</p>
