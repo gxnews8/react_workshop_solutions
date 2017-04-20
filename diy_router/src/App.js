@@ -30,6 +30,12 @@ class CoffeeScript extends Component {
     }
 }
 
+class Redirect extends Component {
+    componentDidMount(){
+        browserHistory.navigateTo(this.props.to);
+    }
+    render(){ return null; }
+}
 
 class App extends Component {
     constructor(props){
