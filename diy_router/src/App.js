@@ -15,6 +15,12 @@ class App extends Component {
     }
 }
 
+const Route = ({pattern, component }) => {
+    return (pattern === location.pathname) 
+            ? React.createElement(component)
+            : null;
+}
+
 const Link = ({to, children}) => {
     const handleClick = (event) => {
         event.preventDefault();
