@@ -2,6 +2,35 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import browserHistory from './browserHistory';
 
+class CoffeeScript extends Component {
+    state = {
+        countdown: 3
+    }
+    componentDidMount(){
+        this.interval = setInterval(()=>{
+            this.setState({
+                countdown: this.state.countdown - 1
+            })
+        }, 1000);
+    }
+    componentWillUnmount(){
+        clearInterval(this.interval);
+    }
+    render(){
+        if (this.state.countdown > 0 ){
+            return (
+                <p>
+                    CoffeeScript is a programming language that transcompiles to JavaScript.
+                    So we'll redirect to <code>/javascript</code> in {this.state.countdown}.
+                </p>
+            )
+        } else {
+            return <Redirect to="/javascript"/>
+        }
+    }
+}
+
+
 class App extends Component {
     constructor(props){
         super(props);
@@ -14,9 +43,11 @@ class App extends Component {
             <div>
                 <Link to="/javascript">JavaScript</Link>
                 <Link to="/haskell">Haskell</Link>
+                <Link to="/coffeescript">CoffeeScript</Link>
                 <hr/>
                 <Route pattern='/javascript' component={JavaScript}/>
                 <Route pattern='/haskell' component={Haskell}/>
+                <Route pattern='/coffeescript' component={CoffeeScript}/>
             </div>
         )
     }
