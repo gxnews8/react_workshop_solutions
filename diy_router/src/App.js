@@ -2,11 +2,19 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class App extends Component {
+    rerender = () => {
+        this.forceUpdate();
+    }
     render(){
         return (
             <div>
-                <Link to="/javascript">JavaScript</Link>
-                <Link to="/haskell">Haskell</Link>
+                <Link to="/javascript" rerender={this.rerender}>JavaScript</Link>
+                <Link to="/haskell" rerender={this.rerender}>Haskell</Link>
+                <Link to="/haskell" rerender={this.rerender}>Haskell</Link>
+                <Link to="/haskell" rerender={this.rerender}>Haskell</Link>
+                <Link to="/haskell" rerender={this.rerender}>Haskell</Link>
+                <Link to="/haskell" rerender={this.rerender}>Haskell</Link>
+                
                 <hr/>
                 <Route pattern='/javascript' component={JavaScript}/>
                 <Route pattern='/haskell' component={Haskell}/>
@@ -21,10 +29,11 @@ const Route = ({pattern, component }) => {
             : null;
 }
 
-const Link = ({to, children}) => {
+const Link = ({to, children, rerender}) => {
     const handleClick = (event) => {
         event.preventDefault();
         history.pushState({}, null, to);
+        rerender();
     }
     return (
         <a  
@@ -39,6 +48,7 @@ const Link = ({to, children}) => {
 Link.propTypes = {
     to: PropTypes.string.isRequired,
     children: PropTypes.string.isRequired,
+    rerender: PropTypes.func.isRequired
 }
 
 const JavaScript = () => <p>A high-level, dynamic, untyped, and interpreted programming language.</p>
