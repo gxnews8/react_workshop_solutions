@@ -2,6 +2,25 @@
     display: inline-block;
     width: 100px;
     height: 100px;
-    background: steelblue;
     border: 3px solid black;
+}
+
+.Cell:hover {
+    background: purple;
+}
+
+.Cell.active {
+    background: steelblue;
+}
+
+.Cell.correct {
+    background: lightgreen;
+}
+
+.Cell.wrong {
+    background: darkred;
+}
+
+.Cell.missed {
+    background: lightblue;
 }

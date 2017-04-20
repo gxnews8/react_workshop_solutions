@@ -1,15 +1,3 @@
-.Grid.initialize .Cell {
-    background: red;
-}
-
-.Grid.preview .Cell {
-    background: yellow;
-}
-
-.Grid.start .Cell {
-    background: green;
-}
-
-.Grid.results .Cell {
-    background: blue;
+.Grid {
+    margin-bottom: 10px;
 }

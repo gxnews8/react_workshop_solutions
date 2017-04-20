@@ -3,14 +3,20 @@ import Row from './Row';
 import './Grid.css';
 
 const Grid = (props) => {
-        const rows = [];
-        for (let i = 0; i < 3; i += 1){
-            rows.push(<Row onCellClick={props.onCellClick} key={i} row={i}/>)
-        }
+        const rows = props.matrix.map((cells, idx) => {
+            return <Row 
+                        className="Row"
+                        key={idx} 
+                        cells={cells} 
+                        onCellClick={props.onCellClick}
+                        gamePhase={props.gamePhase}
+                        correctGuesses={props.correctGuesses}
+                        wrongGuesses={props.wrongGuesses}
+                        activeCells={props.activeCells}
+                        />
+        })
         return (
-            <div className={`Grid ${props.gamePhase}`}>
-                {rows}
-            </div>
+            <div className={`Grid ${props.gamePhase}`}>{rows}</div>
         )
 }
 

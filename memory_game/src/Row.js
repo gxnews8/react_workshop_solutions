@@ -1,11 +1,18 @@
 import React from 'react';
 import Cell from './Cell';
-
+import './Row.css';
 const Row = (props) => {
-        const cells = [];
-        for (let i = 0; i < 4; i += 1){
-            cells.push(<Cell onClick={props.onCellClick} key={i} row={props.row} cell={i}/>)
-        }
+        const cells = props.cells.map((location) => (
+            <Cell 
+                key={location} 
+                location={location} 
+                onClick={props.onCellClick}
+                gamePhase={props.gamePhase}
+                correctGuesses={props.correctGuesses}
+                wrongGuesses={props.wrongGuesses}
+                activeCells={props.activeCells}
+                />
+        ))
         return (
             <div className="Row">
                 {cells}
